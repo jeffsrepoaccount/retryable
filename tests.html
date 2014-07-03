@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="Retryable.js"></script>
+    <script type="text/javascript">
+        (function() {
+            /**
+             * The method to retry until success. 
+             *
+             * @param int attempt The current attempt count
+             * @param int nextSleep 
+             * @return boolean Whether the attempt was successful
+             */
+            var tryThis = function(attempt, nextSleep) {
+                // Calculate success
+                var success = Math.round(parseFloat(Math.random())*100)/100;
+
+                console.log(attempt + ': ' + success);
+                console.log('sleep: ' + nextSleep);
+
+                // 5% success rate
+                return success < 0.05;
+            }
+
+            /**
+             * If no max value specified, success will always be true.
+             *
+             * @param boolean success 
+             */
+            var notifyComplete = function(success) {
+                if(success) {
+                    console.log('success!');
+                } else {
+                    console.log('fail!');
+                }
+            }
+
+            // Instantiate and use:
+            var sleepMin = 3,   // Sleep for a minimum of 3 seconds and a 
+                sleepMax = 10;  // maximum of 30 seconds between attempts
+
+            var retry = new Retryable(sleepMin, sleepMax);
+
+            var tests = [
+                function() {
+                    // Just keep calling forever until success, no 
+                    // complete notification
+                    console.log(' [--- Test 1 ---]');
+                    
+                    retry.call(tryThis)
+                        .begin()
+                    ;
+                },
+                function() {
+                    // Call until success, notify when successful.
+                    console.log(' [--- Test 2 ---]');
+                    
+                    retry.call(tryThis)
+                        .then(notifyComplete)
+                        .begin()
+                    ;
+                },
+                function() {
+                    console.log(' [--- Test 3 ---]');
+                    // Make a maximum of 5 attempts
+                    
+                    retry.call(tryThis)
+                        .then(notifyComplete)
+                        .max(5)
+                        .begin()
+                    ;
+                },
+                function() {
+                    console.log(' [--- Test 4 ---]');
+                    // Keep calling forever, but with a random variance
+                    
+                    retry.call(tryThis)
+                        .withVariance()
+                        .then(notifyComplete)
+                        .max(3)
+                        .begin()
+                    ;
+                }
+            ];
+            
+            // Run tests
+            
+            tests[1]();
+
+        })();
+    </script>
+    <body></body>
+</html>
