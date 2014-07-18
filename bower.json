@@ -1,0 +1,10 @@
+{
+    "name": "retryable",
+    "version": "0.1",
+    "main": "dist/retryable.js",
+    "ignore": [
+        ".gitignore",
+        "bower.json",
+        "gruntfile.js"
+    ]
+}
