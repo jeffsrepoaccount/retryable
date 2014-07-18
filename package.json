@@ -1,0 +1,25 @@
+{
+  "name": "retryable",
+  "description": "Provides a mechanism to keep attempting something over and over until it is \r successful. Provide it a function to keep calling until it returns true, and \r it will keep attempting it until it does all in a non-blocking manner. \r Optionally provide a maximum number attempts, a successful callback, or add \r random variance to the sleep time between callbacks.",
+  "version": "0.1.0",
+  "main": "grunt.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffsrepoaccount/retryable"
+  },
+  "keywords": [
+    "JavaScript",
+    "Real",
+    "Time",
+    "Service"
+  ],
+  "author": "Jeff Lambert",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/jeffsrepoaccount/retryable/issues"
+  },
+  "homepage": "https://github.com/jeffsrepoaccount/retryable"
+}

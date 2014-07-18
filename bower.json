@@ -5,6 +5,7 @@
     "ignore": [
         ".gitignore",
         "bower.json",
-        "gruntfile.js"
+        "gruntfile.js",
+        "src",
     ]
 }
