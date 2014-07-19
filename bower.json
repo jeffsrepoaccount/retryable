@@ -5,7 +5,11 @@
     "ignore": [
         ".gitignore",
         "bower.json",
-        "gruntfile.js",
+        "Gruntfile.js",
         "src",
+        "CONTRIBUTING.md",
+        "install.sh",
+        "node_modules",
+        "karma.conf.js"
     ]
 }
