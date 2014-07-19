@@ -4,7 +4,7 @@
  * Provides a mechanism to keep attempting something over and over until it is 
  * successful. Provide it a function to keep calling until it returns true, and 
  * it will keep attempting it until it does. Timeout between attempts is 
- * calculated on a logarithmic scale, with an optional random variance applied.
+ * calculated on a logarithmic scale with an optional random variance.
  *
  * Copyright (C) 2014  Jeff Lambert
  *
@@ -33,6 +33,7 @@
         self.count          = 0;
         self.maxTries       = 0;
         self.variance       = false;
+        self.lastResult     = false;
 
         self.callback       = callback;
         self.success        = complete;
@@ -66,7 +67,7 @@
          * Starts the callback loop
          */
         function begin() {
-            return callbackLoop();
+            callbackLoop();
         }
 
         //  }}}
@@ -105,13 +106,17 @@
 
             if(!callbackResult) {
                 if(!self.maxTries || (self.count < self.maxTries)) {
-                    setTimeout(callbackLoop, nextSleepValue);
+                    setTimeout(function() {
+                        self.lastResult = callbackLoop();
+                    }, nextSleepValue);
                 } 
             }
 
             if(self.success) {
                 self.success(callbackResult);
             }
+
+            return callbackResult;
         }
 
         //  }}}
