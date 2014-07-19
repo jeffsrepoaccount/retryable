@@ -33,20 +33,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/**\n'+ 
-                 ' * <%= pkg.name %>, built on: <%= grunt.template.today("dd-mm-yyyy") %>\n' + 
-                 ' * Copyright (C) <%= grunt.template.today("yyyy") %> Jeff Lambert \n' + 
-                 ' *\n' + 
-                 ' * https://github.com/jeffsrepoaccount/retryable\n' + 
-                 ' * \n' + 
-                 ' * The JavaScript code in this page is free software: you can\n' + 
-                 ' * redistribute it and/or modify it under the terms of the GNU\n' + 
-                 ' * General Public License (GNU GPL) as published by the Free Software\n' + 
-                 ' * Foundation, either version 3 of the License, or (at your option)\n' + 
-                 ' * any later version.  The code is distributed WITHOUT ANY WARRANTY;\n' + 
-                 ' * without even the implied warranty of MERCHANTABILITY or FITNESS\n' + 
-                 ' * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.\n' + 
-                 ' */\n'
+                banner: '// <%= pkg.name %>, built on: <%= grunt.template.today("dd-mm-yyyy")\n'
             },
             dist: {
                 files: {
