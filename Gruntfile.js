@@ -7,7 +7,8 @@ module.exports = function(grunt) {
                 files: [
                     { 
                         cwd: 'src', 
-                        expand: true, src: ['**'], 
+                        expand: true, 
+                        src: ['**'], 
                         dest: 'dist/', 
                         filter: 'isFile' ,
                         rename: function(dest, src) {
@@ -33,11 +34,11 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '// <%= pkg.name %>, built on: <%= grunt.template.today("dd-mm-yyyy")\n'
+                banner: '// <%= pkg.name %>, built on: <%= grunt.template.today("dd-mm-yyyy") %>\n'
             },
             dist: {
                 files: {
-		    'dist/<%= pkg.name %>.min.js': [ 'src/**/*.js' ]
+		          'dist/<%= pkg.name %>.min.js': [ 'src/**/*.js' ]
                 }
             }
         }

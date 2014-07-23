@@ -21,7 +21,7 @@ The random variance added, if used, is meant to prevent a large number of
 clients from flooding the service with connection requests at the same time 
 when it becomes available.
 
-Minified Footprint: _822 bytes_
+_Minified Footprint: 794 bytes_
 
 ## Usage 
 
