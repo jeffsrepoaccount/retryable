@@ -70,3 +70,19 @@ _Minified Footprint: 794 bytes_
         .begin()
     ;
 ```
+
+Development
+===========
+
+Retryable uses Grunt and Karma to automate building of the distributable. Run the following commands inside of the cloned repository to get set up:
+
+```
+
+    $ npm install grunt
+    $ npm install grunt-contrib-uglify
+    $ npm install grunt-contrib-copy
+    $ npm install grunt-karma
+
+```
+
+To build the source files, run `$ grunt build`.
